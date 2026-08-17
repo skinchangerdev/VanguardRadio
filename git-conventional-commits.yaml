@@ -1,0 +1,35 @@
+# This file is released into the public domain. See COPYING.
+---
+convention:
+  commitTypes:
+    - feature  # Add, adjust or remove a feature
+    - fix      # Fix a bug of a preceded feature commit
+    - refactor # Rewrite/restructure your code, however do not change any behaviour
+    - perf     # Refactor to improve performance
+    - style    # Do not affect the meaning (white-space, formatting, missing semicolons, etc.)
+    - test     # Add missing tests or correcting existing tests
+    - build    # Affect build components like build tool, ci pipeline, dependencies, project version, etc.
+    - ops      # Affect operational components like infrastructure, deployment, backup, recovery, etc.
+    - docs     # Affect documentation only
+    - chore    # Miscellaneous, e.g. modifying `.gitignore`
+    - merge    # Merge a branch
+    - revet    # Revert one or more preceded commits
+  releaseTagGlobPattern: v[0-9]*.[0-9]*.[0-9]*
+changelog:
+  commitTypes:
+    - feature
+    - fix
+    - perf
+    - merge
+  includeInvalidCommits: true
+  commitIgnoreRegexPattern: "^WIP "
+  headlines:
+    feature: Features
+    fix: Bug Fixes
+    perf: Performance Improvements
+    merge: Merges
+    breakingChange: BREAKING CHANGES
+  commitUrl: https://github.com/skinchangerdev/VanguardRadio/commit/%commit%
+  commitRangeUrl: https://github.com/skinchangerdev/VanguardRadio/compare/%from%...%to%?diff=split
+  issueRegexPattern: "#[0-9]+"
+  issueUrl: https://github.com/skinchangerdev/VanguardRadio/issues/%issue%

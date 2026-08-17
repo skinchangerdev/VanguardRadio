@@ -1,0 +1,9 @@
+# This file is released into the public domain. See COPYING.
+
+*.pbo
+.hemttout
+hemtt
+hemtt.exe
+*.biprivatekey
+*.hemttprivatekey
+/.cache

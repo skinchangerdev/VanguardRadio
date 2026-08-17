@@ -1,0 +1,11 @@
+# This file is released into the public domain. See COPYING.
+
+name = "Vanguard Radio"
+author = "SkinChangerDev"
+prefix = "VGR"
+mainprefix = "z"
+
+[version]
+major = 0
+minor = 1
+patch = 0

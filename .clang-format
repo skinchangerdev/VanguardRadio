@@ -1,0 +1,31 @@
+# This file is released into the public domain. See COPYING.
+
+BasedOnStyle: LLVM
+
+# Alignment
+AlignAfterOpenBracket: BlockIndent
+PointerAlignment: Left
+
+# Indentation
+IndentWidth: 4
+NamespaceIndentation: All
+IndentExternBlock: Indent
+IndentPPDirectives: BeforeHash
+
+# Includes
+IncludeBlocks: Preserve
+SortIncludes: CaseSensitive
+
+# Multi-line formatting
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortEnumsOnASingleLine: false
+
+# Packing
+BinPackArguments: false
+BinPackParameters: false
+PackConstructorInitializers: CurrentLine
+
+# Misc
+ColumnLimit: 120
+FixNamespaceComments: false
