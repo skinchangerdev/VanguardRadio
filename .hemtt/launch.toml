@@ -1,0 +1,15 @@
+[default]
+workshop = [
+    "450814997" # CBA_A3
+]
+parameters = [
+    "-skipIntro",
+    "-noSplash",
+    "-showScriptErrors",
+    "-debug",
+    "-filePatching"
+]
+executable = "arma3"
+file_patching = false
+binarize = true
+rapify = false
