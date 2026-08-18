@@ -3,7 +3,7 @@
 
 #include <array>
 
-namespace VanguardRadioIPC {
+namespace VanguardRadio {
     using Vector3D = std::array<float, 3>;
 
     enum class Error {

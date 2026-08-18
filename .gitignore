@@ -9,6 +9,6 @@ hemtt.exe
 /.cache
 
 /build
-/VanguardRadioIPC.so
-/VanguardRadioIPC.dll
-/VanguardRadioIPC_x64.dll
+/VanguardRadio.so
+/VanguardRadio.dll
+/VanguardRadio_x64.dll

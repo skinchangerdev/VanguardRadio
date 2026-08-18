@@ -8,4 +8,4 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # directory of the mod, which is expected by Arma 3.
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
-add_subdirectory(extensions/VanguardRadioIPC)
+add_subdirectory(extension)

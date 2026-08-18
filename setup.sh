@@ -1,8 +1,7 @@
 #!/bin/sh
+# This file is released into the public domain. See COPYING.
 
 cd $0/..
-
-
 
 rm -r build/linux
 rm -r build/windows

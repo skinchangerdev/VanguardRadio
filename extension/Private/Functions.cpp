@@ -1,12 +1,12 @@
 // This file is released into the public domain. See COPYING.
 
-#include "VanguardRadioIPC/Functions.hpp"
+#include "VanguardRadio/Functions.hpp"
 
 #include <string>
 
-using namespace VanguardRadioIPC;
+using namespace VanguardRadio;
 
-Error VanguardRadioIPC::parseFunctionCall(
+Error VanguardRadio::parseFunctionCall(
     std::string_view functionName,
     const std::vector<std::string_view>& arguments,
     std::string* output
@@ -21,7 +21,7 @@ Error VanguardRadioIPC::parseFunctionCall(
     }
 }
 
-Error VanguardRadioIPC::parseVectorArgument(std::string_view argument, Vector3D* outVector) {
+Error VanguardRadio::parseVectorArgument(std::string_view argument, Vector3D* outVector) {
     std::string numberChars = "1234567890-";
     size_t searchStart = 0;
 
@@ -39,7 +39,7 @@ Error VanguardRadioIPC::parseVectorArgument(std::string_view argument, Vector3D*
     return Error::None;
 }
 
-Error VanguardRadioIPC::test(std::string* output) {
+Error VanguardRadio::test(std::string* output) {
     *output = "Hello, Volker!";
     return Error::None;
 }

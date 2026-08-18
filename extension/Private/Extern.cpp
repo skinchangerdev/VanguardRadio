@@ -4,7 +4,7 @@
 #include <cstring>
 #include <string>
 
-#include "VanguardRadioIPC/Functions.hpp"
+#include "VanguardRadio/Functions.hpp"
 
 extern "C" {
     __attribute__((dllexport)) void RVExtensionVersion(char* output, unsigned int outputSize);
@@ -21,7 +21,7 @@ extern "C" {
 }
 
 void RVExtensionVersion(char* output, unsigned int outputSize) {
-    const char extensionName[] = "VanguardRadioIPC v0.1.0";
+    const char extensionName[] = "VanguardRadio v0.1.0";
     std::strncpy(output, extensionName, outputSize - 1);
 }
 
@@ -29,7 +29,7 @@ void RVExtension(char* output, unsigned int outputSize, const char* functionName
     std::string safeOutput = {};
     std::vector<std::string_view> argumentsViews = {};
 
-    VanguardRadioIPC::parseFunctionCall(functionName, argumentsViews, &safeOutput);
+    VanguardRadio::parseFunctionCall(functionName, argumentsViews, &safeOutput);
 
     safeOutput.copy(output, outputSize);
 }
@@ -47,7 +47,7 @@ int RVExtensionArgs(
         argumentViews[index] = std::string_view(arguments[index]);
     }
 
-    VanguardRadioIPC::parseFunctionCall(functionName, argumentViews, &safeOutput);
+    VanguardRadio::parseFunctionCall(functionName, argumentViews, &safeOutput);
 
     safeOutput.copy(output, outputSize);
     // I'm not quite sure what the return value does

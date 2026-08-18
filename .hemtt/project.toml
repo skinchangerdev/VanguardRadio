@@ -13,7 +13,7 @@ patch = 0
 [files]
 include = [
     "COPYING",
-    "VanguardRadioIPC.so", # Linux binary
-    "VanguardRadioIPC.dll", # Windows 32-bit binary
-    "VanguardRadioIPC_x64.dll" # Windows 64-bit binary
+    "VanguardRadio.so", # Linux binary
+    "VanguardRadio.dll", # Windows 32-bit binary
+    "VanguardRadio_x64.dll" # Windows 64-bit binary
 ]

@@ -5,9 +5,9 @@
 #include <string_view>
 #include <vector>
 
-#include "VanguardRadioIPC/Types.hpp"
+#include "VanguardRadio/Types.hpp"
 
-namespace VanguardRadioIPC {
+namespace VanguardRadio {
     Error parseFunctionCall(
         std::string_view functionName,
         const std::vector<std::string_view>& arguments,
