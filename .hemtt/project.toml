@@ -9,3 +9,9 @@ mainprefix = "z"
 major = 0
 minor = 1
 patch = 0
+
+[files]
+include = [
+    "COPYING",
+    "VanguardRadioIPC.so" # Linux binary
+]

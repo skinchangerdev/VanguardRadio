@@ -7,3 +7,5 @@ hemtt.exe
 *.biprivatekey
 *.hemttprivatekey
 /.cache
+/build
+/VanguardRadioIPC.so
