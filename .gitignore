@@ -10,4 +10,5 @@ hemtt.exe
 
 /build
 /VanguardRadioIPC.so
+/VanguardRadioIPC.dll
 /VanguardRadioIPC_x64.dll
