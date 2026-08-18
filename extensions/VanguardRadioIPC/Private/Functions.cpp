@@ -6,7 +6,7 @@
 
 using namespace VanguardRadioIPC;
 
-Error parseFunctionCall(
+Error VanguardRadioIPC::parseFunctionCall(
     std::string_view functionName,
     const std::vector<std::string_view>& arguments,
     std::string* output
@@ -21,7 +21,7 @@ Error parseFunctionCall(
     }
 }
 
-Error parseVectorArgument(std::string_view argument, Vector3D* outVector) {
+Error VanguardRadioIPC::parseVectorArgument(std::string_view argument, Vector3D* outVector) {
     std::string numberChars = "1234567890-";
     size_t searchStart = 0;
 
@@ -39,7 +39,7 @@ Error parseVectorArgument(std::string_view argument, Vector3D* outVector) {
     return Error::None;
 }
 
-Error test(std::string* output) {
+Error VanguardRadioIPC::test(std::string* output) {
     *output = "Hello, Volker!";
     return Error::None;
 }
