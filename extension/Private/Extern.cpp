@@ -7,18 +7,20 @@
 #include "VanguardRadio/Functions.hpp"
 
 #if _WIN32
+    #define EXPORT_ATTRIBUTE __declspec(dllexport)
     #define CALLING_CONVENTION __stdcall
 #else
+    #define EXPORT_ATTRIBUTE
     #define CALLING_CONVENTION
 #endif
 
 extern "C" {
-    __attribute__((dllexport)) void CALLING_CONVENTION RVExtensionVersion(char* output, unsigned int outputSize);
+    EXPORT_ATTRIBUTE void CALLING_CONVENTION RVExtensionVersion(char* output, unsigned int outputSize);
 
-    __attribute__((dllexport)) void CALLING_CONVENTION
+    EXPORT_ATTRIBUTE void CALLING_CONVENTION
     RVExtension(char* output, unsigned int outputSize, const char* functionName);
 
-    __attribute__((dllexport)) int CALLING_CONVENTION RVExtensionArgs(
+    EXPORT_ATTRIBUTE int CALLING_CONVENTION RVExtensionArgs(
         char* output,
         unsigned int outputSize,
         const char* functionName,
@@ -61,4 +63,5 @@ int CALLING_CONVENTION RVExtensionArgs(
     return 0;
 }
 
+#undef EXPORT_ATTRIBUTE
 #undef CALLING_CONVENTION
