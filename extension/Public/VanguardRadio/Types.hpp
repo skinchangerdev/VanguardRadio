@@ -9,9 +9,13 @@ namespace VanguardRadio {
     using Vector3D = std::array<float, 3>;
 
     enum class Error {
+        // No error, all good
         None = 0,
+        // SQF called with an unknown function name
         FunctionName = 1,
+        // SQF called with an incorrect number of arguments
         ArgumentsNumber = 2,
+        // SQF called with an incorrect/unparseable syntax for a Vector3D argument
         Vector3DSyntax = 3
     };
 };
