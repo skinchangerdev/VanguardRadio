@@ -6,12 +6,19 @@
 
 #include "VanguardRadio/Functions.hpp"
 
+#if _WIN32
+    #define CALLING_CONVENTION __stdcall
+#else
+    #define CALLING_CONVENTION
+#endif
+
 extern "C" {
-    __attribute__((dllexport)) void RVExtensionVersion(char* output, unsigned int outputSize);
+    __attribute__((dllexport)) void CALLING_CONVENTION RVExtensionVersion(char* output, unsigned int outputSize);
 
-    __attribute__((dllexport)) void RVExtension(char* output, unsigned int outputSize, const char* functionName);
+    __attribute__((dllexport)) void CALLING_CONVENTION
+    RVExtension(char* output, unsigned int outputSize, const char* functionName);
 
-    __attribute__((dllexport)) int RVExtensionArgs(
+    __attribute__((dllexport)) int CALLING_CONVENTION RVExtensionArgs(
         char* output,
         unsigned int outputSize,
         const char* functionName,
@@ -20,12 +27,12 @@ extern "C" {
     );
 }
 
-void RVExtensionVersion(char* output, unsigned int outputSize) {
+void CALLING_CONVENTION RVExtensionVersion(char* output, unsigned int outputSize) {
     const char extensionName[] = "VanguardRadio v0.1.0";
     std::strncpy(output, extensionName, outputSize - 1);
 }
 
-void RVExtension(char* output, unsigned int outputSize, const char* functionName) {
+void CALLING_CONVENTION RVExtension(char* output, unsigned int outputSize, const char* functionName) {
     std::string safeOutput = {};
     std::vector<std::string_view> argumentsViews = {};
 
@@ -34,7 +41,7 @@ void RVExtension(char* output, unsigned int outputSize, const char* functionName
     safeOutput.copy(output, outputSize);
 }
 
-int RVExtensionArgs(
+int CALLING_CONVENTION RVExtensionArgs(
     char* output,
     unsigned int outputSize,
     const char* functionName,
@@ -53,3 +60,5 @@ int RVExtensionArgs(
     // I'm not quite sure what the return value does
     return 0;
 }
+
+#undef CALLING_CONVENTION
