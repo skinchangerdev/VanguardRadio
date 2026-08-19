@@ -4,6 +4,8 @@
 
 #include <string>
 
+#include "VanguardRadio/Mumble.hpp"
+
 using namespace VanguardRadio;
 
 Error VanguardRadio::parseFunctionCall(
@@ -11,12 +13,22 @@ Error VanguardRadio::parseFunctionCall(
     const std::vector<std::string_view>& arguments,
     std::string* output
 ) {
+    // TODO: reduce code duplication here by representing functions exposed to SQF as objects
     if (functionName == functionNameTest) {
         if (arguments.size() != numArgsTest) {
             return Error::argumentsNumber;
         }
         return test(output);
-    } else {
+    }
+#if _WIN32
+    else if (functionName == functionNameMumbleInit) {
+        if (arguments.size() != numArgsMumbleInit) {
+            return Error::argumentsNumber;
+        }
+        return mumbleInit();
+    }
+#endif
+    else {
         return Error::functionName;
     }
 }
