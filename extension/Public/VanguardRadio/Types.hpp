@@ -1,6 +1,8 @@
 // This file is released into the public domain. See COPYING.
 // Error.hpp : defines error values for function returns.
 
+#pragma once
+
 #include <array>
 
 namespace VanguardRadio {

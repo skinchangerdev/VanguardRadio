@@ -1,6 +1,8 @@
 // This file is released into the public domain. See COPYING.
 // Functions.hpp : parses and forwards function calls from SQF
 
+#pragma once
+
 #include <string>
 #include <string_view>
 #include <vector>
