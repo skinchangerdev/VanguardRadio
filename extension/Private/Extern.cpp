@@ -35,11 +35,7 @@ void CALLING_CONVENTION RVExtensionVersion(char* output, unsigned int outputSize
 }
 
 void CALLING_CONVENTION RVExtension(char* output, unsigned int outputSize, const char* functionName) {
-    std::string safeOutput = {};
-    std::vector<std::string_view> argumentsViews = {};
-
-    VanguardRadio::parseFunctionCall(functionName, argumentsViews, &safeOutput);
-
+    std::string safeOutput = "The non-arguments SQF callExtension syntax is unsupported.";
     safeOutput.copy(output, outputSize);
 }
 
