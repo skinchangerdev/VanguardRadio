@@ -13,11 +13,11 @@ Error VanguardRadio::parseFunctionCall(
 ) {
     if (functionName == functionNameTest) {
         if (arguments.size() != numArgsTest) {
-            return Error::ArgumentsNumber;
+            return Error::argumentsNumber;
         }
         return test(output);
     } else {
-        return Error::FunctionName;
+        return Error::functionName;
     }
 }
 
@@ -28,7 +28,7 @@ Error VanguardRadio::parseVectorArgument(std::string_view argument, Vector3D* ou
     for (int index = 0; index < outVector->size(); index++) {
         size_t numberStart = argument.find_first_of(numberChars, searchStart);
         if (numberStart == std::string_view::npos) {
-            return Error::Vector3DSyntax;
+            return Error::vector3DSyntax;
         }
 
         std::string numberString = std::string(argument.substr(numberStart));
@@ -36,10 +36,10 @@ Error VanguardRadio::parseVectorArgument(std::string_view argument, Vector3D* ou
         outVector->at(index) = std::stof(numberString, &searchStart);
     }
 
-    return Error::None;
+    return Error::none;
 }
 
 Error VanguardRadio::test(std::string* output) {
     *output = "Hello, Volker!";
-    return Error::None;
+    return Error::none;
 }

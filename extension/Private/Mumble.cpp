@@ -37,22 +37,22 @@ MumbleSharedMemory* sharedMemory = nullptr;
 
 Error VanguardRadio::mumbleInit() {
     if (sharedMemory != nullptr) {
-        return Error::AlreadyInitialized;
+        return Error::alreadyInitialized;
     }
 
     HANDLE sharedMemoryHandle = OpenFileMappingW(FILE_MAP_ALL_ACCESS, FALSE, L"MumbleLink");
     if (sharedMemoryHandle == NULL) {
-        return Error::FailedInitialization;
+        return Error::failedInitialization;
     }
 
     void* sharedMemoryMap = MapViewOfFile(sharedMemoryHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(sharedMemory));
     if (sharedMemoryMap == NULL) {
         CloseHandle(sharedMemoryHandle);
-        return Error::FailedInitialization;
+        return Error::failedInitialization;
     }
 
     sharedMemory = (MumbleSharedMemory*)sharedMemoryMap;
-    return Error::None;
+    return Error::none;
 }
 
 #endif

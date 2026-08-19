@@ -10,18 +10,18 @@ namespace VanguardRadio {
 
     enum class Error {
         // No error, all good
-        None = 0,
+        none = 0,
         // SQF called with an unknown function name
-        FunctionName = 1,
+        functionName = 1,
         // SQF called with an incorrect number of arguments
-        ArgumentsNumber = 2,
+        argumentsNumber = 2,
         // SQF called with an incorrect/unparseable syntax for a Vector3D argument
-        Vector3DSyntax = 3,
+        vector3DSyntax = 3,
         // SQF tried to initialize MumbleLink when it was already initialized
-        AlreadyInitialized = 4,
+        alreadyInitialized = 4,
         // SQF tried to initialize MumbleLink, but some failure was encountered
-        FailedInitialization = 5,
+        failedInitialization = 5,
         // SQF tried to communicate with MumbleLink when it was yet to be initialized
-        NotInitialized = 6
+        notInitialized = 6
     };
 };
