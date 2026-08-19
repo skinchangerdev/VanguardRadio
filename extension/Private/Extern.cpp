@@ -56,11 +56,10 @@ int CALLING_CONVENTION RVExtensionArgs(
         argumentViews[index] = std::string_view(arguments[index]);
     }
 
-    VanguardRadio::parseFunctionCall(functionName, argumentViews, &safeOutput);
+    VanguardRadio::Error error = VanguardRadio::parseFunctionCall(functionName, argumentViews, &safeOutput);
 
     safeOutput.copy(output, outputSize);
-    // I'm not quite sure what the return value does
-    return 0;
+    return (int)error;
 }
 
 #undef EXPORT_ATTRIBUTE
