@@ -16,6 +16,12 @@ namespace VanguardRadio {
         // SQF called with an incorrect number of arguments
         ArgumentsNumber = 2,
         // SQF called with an incorrect/unparseable syntax for a Vector3D argument
-        Vector3DSyntax = 3
+        Vector3DSyntax = 3,
+        // SQF tried to initialize MumbleLink when it was already initialized
+        AlreadyInitialized = 4,
+        // SQF tried to initialize MumbleLink, but some failure was encountered
+        FailedInitialization = 5,
+        // SQF tried to communicate with MumbleLink when it was yet to be initialized
+        NotInitialized = 6
     };
 };

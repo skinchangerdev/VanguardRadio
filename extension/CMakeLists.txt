@@ -2,7 +2,7 @@
 
 include_directories(Public)
 
-add_library(VanguardRadio MODULE Private/Extern.cpp Private/Functions.cpp)
+add_library(VanguardRadio MODULE Private/Extern.cpp Private/Functions.cpp Private/Mumble.cpp)
 
 set_target_properties(VanguardRadio PROPERTIES PREFIX "")
 if(${VGR_BUILD_LINUX})
