@@ -4,7 +4,7 @@ params [["_eventName", nil, [""]], ["_didJIP", nil, [false]]];
 
 if (hasInterface) then {
     // Initialize relavant globals if needed
-    if (isNil "VGR_isMumbleInitialized") then { VGR_isMumbleInitialized = true; };
+    if (isNil "VGR_isMumbleInitialized") then { VGR_isMumbleInitialized = false; };
 
     // Initialize Mumble if needed
     if (!VGR_isMumbleInitialized) then {
