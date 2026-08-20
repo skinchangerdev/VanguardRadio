@@ -71,12 +71,12 @@ Error VanguardRadio::mumbleSessionUpdate(const std::string& context, const std::
     std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
     // We use strncpy (and later wcsncpy) to ensure excess characters in the shared memory are null
-    char* contextPtr = (char*)&sharedMemory->context;
+    char* contextPtr = (char*)sharedMemory->context;
     std::strncpy(contextPtr, context.c_str(), contextMaxLength);
     sharedMemory->contextLength = std::min(context.length(), contextMaxLength);
 
     std::wstring wideIdentity = converter.from_bytes(identity);
-    wchar_t* identityPtr = (wchar_t*)&sharedMemory->identity;
+    wchar_t* identityPtr = (wchar_t*)sharedMemory->identity;
     std::wcsncpy(identityPtr, wideIdentity.c_str(), identityMaxLength);
 
     return Error::none;
