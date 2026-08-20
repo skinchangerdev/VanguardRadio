@@ -9,8 +9,8 @@ private _forwardsLocal = _directionsLocal select 0;
 private _upwardsLocal = _directionsLocal select 1;
 
 private _position = player modelToWorld _positionLocal;
-private _forwards = player modelToWorld _forwardsLocal;
-private _upwards = player modelToWorld _upwardsLocal;
+private _forwards = player vectorModelToWorld _forwardsLocal;
+private _upwards = player vectorModelToWorld _upwardsLocal;
 [_position, _forwards, _upwards] call VGR_fnc_mumbleFrameUpdate;
 
 nil;
