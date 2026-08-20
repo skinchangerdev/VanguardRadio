@@ -98,4 +98,33 @@ Error VanguardRadio::mumbleFrameUpdate(const Vector3D& position, const Vector3D&
     return Error::none;
 }
 
+void appendVectorToOutput(std::string vectorName, const float vector[3], std::string* output) {
+    output->append(vectorName + ": ");
+    output->append(std::to_string(vector[0]) + ", ");
+    output->append(std::to_string(vector[1]) + ", ");
+    output->append(std::to_string(vector[2]) + "\n");
+}
+
+Error VanguardRadio::mumbleDumpMemory(std::string* output) {
+    if (sharedMemory == nullptr) {
+        return Error::notInitialized;
+    }
+
+    std::string context = std::string((char*)sharedMemory->context);
+    output->append("context: " + context + "\n");
+
+    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+    std::string narrowIdentity = converter.to_bytes(sharedMemory->identity);
+    output->append("identity: " + narrowIdentity + "\n");
+
+    appendVectorToOutput("avatarPosition", sharedMemory->avatarPosition, output);
+    appendVectorToOutput("cameraPosition", sharedMemory->cameraPosition, output);
+    appendVectorToOutput("avatarForwards", sharedMemory->avatarForwards, output);
+    appendVectorToOutput("cameraForwards", sharedMemory->cameraForwards, output);
+    appendVectorToOutput("avatarUpwards", sharedMemory->avatarUpwards, output);
+    appendVectorToOutput("cameraUpwards", sharedMemory->cameraUpwards, output);
+
+    return Error::none;
+}
+
 #endif

@@ -23,6 +23,7 @@ class CfgFunctions {
             class mumbleInit {};
             class mumbleSessionUpdate {};
             class mumbleFrameUpdate {};
+            class mumbleDumpMemory {};
         };
 
         class Handlers {
