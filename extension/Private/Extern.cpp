@@ -1,6 +1,7 @@
 // This file is released into the public domain. See COPYING.
 // Extern.cpp : defines C ABI which Arma 3 uses
 
+#include <cstdint>
 #include <cstring>
 #include <string>
 
@@ -14,7 +15,17 @@
     #define CALLING_CONVENTION
 #endif
 
+enum FeatureFlags : uint64_t {
+    contextArgumentsVoidPtr = 1 << 0,
+    contextStackTrace = 1 << 1,
+    contextNoDefaultCall = 1 << 2,
+    argumentNoEscapeString = 1 << 3
+};
+
 extern "C" {
+    EXPORT_ATTRIBUTE uint64_t RVExtensionFeatureFlags =
+        FeatureFlags::contextNoDefaultCall | FeatureFlags::argumentNoEscapeString;
+
     EXPORT_ATTRIBUTE void CALLING_CONVENTION RVExtensionVersion(char* output, unsigned int outputSize);
 
     EXPORT_ATTRIBUTE void CALLING_CONVENTION
