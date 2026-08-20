@@ -14,5 +14,10 @@ namespace VanguardRadio {
     const size_t numArgsMumbleInit = 0;
     // Initialize IPC with MumbleLink
     Error mumbleInit();
+
+    const std::string functionNameMumbleSessionUpdate = "mumbleSessionUpdate";
+    const size_t numArgsMumbleSessionUpdate = 2;
+    // Update MumbleLink session information
+    Error mumbleSessionUpdate(const std::string& context, const std::string& identity);
 #endif
 };

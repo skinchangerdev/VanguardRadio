@@ -6,6 +6,10 @@
 #include "VanguardRadio/Mumble.hpp"
 
 #if _WIN32
+    #include <codecvt>
+    #include <cstring>
+    #include <cwchar>
+    #include <locale>
     #include <windows.h>
 #endif
 
@@ -20,6 +24,7 @@ struct MumbleSharedMemory {
     float avatarForwards[3];
     float avatarUpwards[3];
 
+    // Undocumented by Mumble, unknown usage
     wchar_t name[256];
 
     float cameraPosition[3];
@@ -30,6 +35,7 @@ struct MumbleSharedMemory {
 
     UINT32 contextLength;
     unsigned char context[256];
+    // Undocumented by Mumble, unknown usage
     wchar_t description[2048];
 };
 
@@ -52,6 +58,27 @@ Error VanguardRadio::mumbleInit() {
     }
 
     sharedMemory = (MumbleSharedMemory*)sharedMemoryMap;
+    return Error::none;
+}
+
+Error VanguardRadio::mumbleSessionUpdate(const std::string& context, const std::string& identity) {
+    if (sharedMemory == nullptr) {
+        return Error::notInitialized;
+    }
+
+    const size_t contextMaxLength = 256;
+    const size_t identityMaxLength = 256;
+    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+
+    // We use strncpy (and later wcsncpy) to ensure excess characters in the shared memory are null
+    char* contextPtr = (char*)&sharedMemory->context;
+    std::strncpy(contextPtr, context.c_str(), contextMaxLength);
+    sharedMemory->contextLength = std::min(context.length(), contextMaxLength);
+
+    std::wstring wideIdentity = converter.from_bytes(identity);
+    wchar_t* identityPtr = (wchar_t*)&sharedMemory->identity;
+    std::wcsncpy(identityPtr, wideIdentity.c_str(), identityMaxLength);
+
     return Error::none;
 }
 

@@ -26,6 +26,13 @@ Error VanguardRadio::parseFunctionCall(
             return Error::argumentsNumber;
         }
         return mumbleInit();
+    } else if (functionName == functionNameMumbleSessionUpdate) {
+        if (arguments.size() != numArgsMumbleSessionUpdate) {
+            return Error::argumentsNumber;
+        }
+        std::string context = std::string(arguments[0]);
+        std::string identity = std::string(arguments[1]);
+        return mumbleSessionUpdate(context, identity);
     }
 #endif
     else {
