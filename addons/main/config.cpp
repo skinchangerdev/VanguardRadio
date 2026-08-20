@@ -24,5 +24,16 @@ class CfgFunctions {
             class mumbleSessionUpdate {};
             class mumbleFrameUpdate {};
         };
+
+        class Handlers {
+            file = "z\VGR\addons\main\Handlers";
+
+            class handlePostInit {
+                postInit = 1;
+            };
+
+            class handleEachFrame {};
+            class handleLocalDisconnect {};
+        };
     };
 };
