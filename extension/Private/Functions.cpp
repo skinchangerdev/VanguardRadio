@@ -55,18 +55,19 @@ Error VanguardRadio::parseFunctionCall(
 }
 
 Error VanguardRadio::parseVectorArgument(std::string_view argument, Vector3D* outVector) {
-    std::string numberChars = "1234567890-";
-    size_t searchStart = 0;
+    const std::string numberChars = "1234567890-";
+    std::string searchString = std::string(argument);
 
     for (int index = 0; index < outVector->size(); index++) {
-        size_t numberStart = argument.find_first_of(numberChars, searchStart);
-        if (numberStart == std::string_view::npos) {
+        size_t numberStart = searchString.find_first_of(numberChars);
+        if (numberStart == std::string::npos) {
             return Error::vector3DSyntax;
         }
+        searchString.erase(0, numberStart);
 
-        std::string numberString = std::string(argument.substr(numberStart));
-
-        outVector->at(index) = std::stof(numberString, &searchStart);
+        size_t numberLength;
+        outVector->at(index) = std::stof(searchString, &numberLength);
+        searchString.erase(0, numberLength);
     }
 
     // We need to invert the X-axis, as Arma 3 uses right-handed coordinates but Mumble expects left-handed coordinates.
