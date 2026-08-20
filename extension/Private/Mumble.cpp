@@ -51,7 +51,7 @@ Error VanguardRadio::mumbleInit() {
         return Error::failedInitialization;
     }
 
-    void* sharedMemoryMap = MapViewOfFile(sharedMemoryHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(sharedMemory));
+    void* sharedMemoryMap = MapViewOfFile(sharedMemoryHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(MumbleSharedMemory));
     if (sharedMemoryMap == NULL) {
         CloseHandle(sharedMemoryHandle);
         return Error::failedInitialization;
