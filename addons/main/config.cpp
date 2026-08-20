@@ -13,3 +13,16 @@ class CfgPatches {
         weapons[] = {};
     };
 };
+
+class CfgFunctions {
+    class VGR {
+        class Extension {
+            file = "\z\VGR\addons\main\Extension";
+
+            class test {};
+            class mumbleInit {};
+            class mumbleSessionUpdate {};
+            class mumbleFrameUpdate {};
+        };
+    };
+};
