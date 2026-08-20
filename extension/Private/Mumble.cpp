@@ -82,4 +82,20 @@ Error VanguardRadio::mumbleSessionUpdate(const std::string& context, const std::
     return Error::none;
 }
 
+Error VanguardRadio::mumbleFrameUpdate(const Vector3D& position, const Vector3D& forwards, const Vector3D& upwards) {
+    if (sharedMemory == nullptr) {
+        return Error::notInitialized;
+    }
+
+    const size_t vectorSize = sizeof(float[3]);
+    std::memcpy(&sharedMemory->avatarPosition, position.data(), vectorSize);
+    std::memcpy(&sharedMemory->cameraPosition, position.data(), vectorSize);
+    std::memcpy(&sharedMemory->avatarForwards, forwards.data(), vectorSize);
+    std::memcpy(&sharedMemory->cameraForwards, forwards.data(), vectorSize);
+    std::memcpy(&sharedMemory->avatarUpwards, upwards.data(), vectorSize);
+    std::memcpy(&sharedMemory->cameraUpwards, upwards.data(), vectorSize);
+
+    return Error::none;
+}
+
 #endif

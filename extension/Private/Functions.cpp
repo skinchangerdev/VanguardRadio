@@ -2,6 +2,7 @@
 
 #include "VanguardRadio/Functions.hpp"
 
+#include <array>
 #include <string>
 
 #include "VanguardRadio/Mumble.hpp"
@@ -33,6 +34,19 @@ Error VanguardRadio::parseFunctionCall(
         std::string context = std::string(arguments[0]);
         std::string identity = std::string(arguments[1]);
         return mumbleSessionUpdate(context, identity);
+    } else if (functionName == functionNameMumbleFrameUpdate) {
+        if (arguments.size() != numArgsMumbleFrameUpdate) {
+            return Error::argumentsNumber;
+        }
+
+        std::array<Vector3D, numArgsMumbleFrameUpdate> vectors;
+        for (int index = 0; index < vectors.size(); index++) {
+            Error parseError = parseVectorArgument(arguments[index], &vectors[index]);
+            if (parseError != Error::none) {
+                return parseError;
+            }
+        };
+        return mumbleFrameUpdate(vectors[0], vectors[1], vectors[2]);
     }
 #endif
     else {
