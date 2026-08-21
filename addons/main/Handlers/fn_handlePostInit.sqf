@@ -15,21 +15,24 @@ if (hasInterface) then {
         };
     };
 
-    // Update session information
-    private _context = serverName;
-    private _identity = getPlayerUID player;
-    [_context, _identity] call VGR_fnc_mumbleSessionUpdate;
+    // Only hook up event handlers when we are connected to mumble
+    if (VGR_isMumbleInitialized) then {
+        // Update session information
+        private _context = serverName;
+        private _identity = getPlayerUID player;
+        [_context, _identity] call VGR_fnc_mumbleSessionUpdate;
 
-    // Handle frame updates
-    addMissionEventHandler ["EachFrame", VGR_fnc_handleEachFrame];
+        // Handle frame updates
+        addMissionEventHandler ["EachFrame", VGR_fnc_handleEachFrame];
 
-    // There is no proper client-side disconnected event, so we have to use this mess
-    0 spawn {
-        waitUntil { !isNull findDisplay 46 };
-        findDisplay 46 displayAddEventHandler ["Unload", {
-            findDisplay 46 displayRemoveEventHandler ["Unload", _thisEventHandler];
-            call VGR_fnc_handleLocalDisconnect;
-        }];
+        // There is no proper client-side disconnected event, so we have to use this mess
+        0 spawn {
+            waitUntil { !isNull findDisplay 46 };
+            findDisplay 46 displayAddEventHandler ["Unload", {
+                findDisplay 46 displayRemoveEventHandler ["Unload", _thisEventHandler];
+                call VGR_fnc_handleLocalDisconnect;
+            }];
+        };
     };
 };
 
