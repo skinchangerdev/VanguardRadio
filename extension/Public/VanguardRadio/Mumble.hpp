@@ -21,9 +21,16 @@ namespace VanguardRadio {
     Error mumbleSessionUpdate(const std::string& context, const std::string& identity);
 
     const std::string functionNameMumbleFrameUpdate = "mumbleFrameUpdate";
-    const size_t numArgsMumbleFrameUpdate = 3;
+    const size_t numArgsMumbleFrameUpdate = 6;
     // Update MumbleLink position and direction information
-    Error mumbleFrameUpdate(const Vector3D& position, const Vector3D& forwards, const Vector3D& upwards);
+    Error mumbleFrameUpdate(
+        const Vector3D& avatarPosition,
+        const Vector3D& avatarForwards,
+        const Vector3D& avatarUpwards,
+        const Vector3D& cameraPosition,
+        const Vector3D& cameraForwards,
+        const Vector3D& cameraUpwards
+    );
 
     const std::string functionNameMumbleDumpMemory = "mumbleDumpMemory";
     const size_t numArgsMumbleDumpMemory = 0;

@@ -46,7 +46,7 @@ Error VanguardRadio::parseFunctionCall(
                 return parseError;
             }
         };
-        return mumbleFrameUpdate(vectors[0], vectors[1], vectors[2]);
+        return mumbleFrameUpdate(vectors[0], vectors[1], vectors[2], vectors[3], vectors[4], vectors[5]);
     } else if (functionName == functionNameMumbleDumpMemory) {
         if (arguments.size() != numArgsMumbleDumpMemory) {
             return Error::argumentsNumber;

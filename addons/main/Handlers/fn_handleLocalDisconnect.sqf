@@ -9,6 +9,6 @@ private _identity = getPlayerUID player;
 private _position = [0, 0, 0];
 private _forwards = [1, 0, 0];
 private _upwards = [0, 0, 1];
-[_position, _forwards, _upwards] call VGR_fnc_mumbleFrameUpdate;
+[_position, _forwards, _upwards, _position, _forwards, _upwards] call VGR_fnc_mumbleFrameUpdate;
 
 nil;
